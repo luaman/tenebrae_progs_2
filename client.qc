@@ -943,10 +943,8 @@ void() PlayerPreThink =
 
 		if (!self.flashlight) {
 			self.flashlight = spawn ();
-
-			setmodel(self.flashlight, "progs/w_light.spr");
 			self.flashlight.velocity = '0 0 0';
-
+			setmodel(self.flashlight, "progs/flashlight.spr");
 			self.flashlight.style = 0;
 			self.flashlight.skin = 24;
 			self.flashlight.color = '1 1 1';
@@ -957,6 +955,7 @@ void() PlayerPreThink =
 		flatforward = normalize(v_forward);
 		flatforward_z = 0;
 		source = self.origin + flatforward * 20;
+		source_z = source_z + 20;
 		setorigin(self.flashlight, source);
 //		traceline (source, source + v_forward*4096, FALSE, self);
 //		setorigin(self.flashlight, trace_endpos - v_forward*100);

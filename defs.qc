@@ -700,10 +700,12 @@ string(string s) precache_sound2	= #76;		// registered version only
 string(string s) precache_file2		= #77;		// registered version only
 
 void(entity e) setspawnparms		= #78;		// set parm1... to the
-												// values at level start
-												// for coop respawn
-//PENTA: set the portal between area1 and area2 to the open parameter (0=closed, 1=open)											
-void(float area1, float area2, float open ) setareaportalstate	= #79;									
+							// values at level start
+							// for coop respawn
+																	
+void(vector o, float pcount,string effectname) BasicEmitter = #79;
+void(vector o, vector v, float pcount,float tick,float life,string effectname) ExtendedEmitter = #80;
+void(float area1, float area2, float open ) setareaportalstate	= #81;	
 
 //============================================================================
 

@@ -287,7 +287,7 @@ void() worldspawn =
 	precache_model ("progs/zom_gib.mdl");
 
 	precache_model ("progs/v_light.mdl");
-	
+	precache_model ("progs/flashlight.spr");
 
 //
 // Setup light animation tables. 'a' is total darkness, 'z' is maxbright.

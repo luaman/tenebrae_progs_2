@@ -315,29 +315,14 @@ void (void() thinkst) SUB_CheckRefire =
 	self.think = thinkst;
 };
 
-//PENTA: new particle support
+//PENTA: new particle support, Fix don't overflow network packets when user spawns to much particles
 void  (entity ent, float pcount, string effectname) SUB_BasicEmitter = 
 {
-		WriteByte (MSG_BROADCAST, SVC_BASICEMITTER);
-		WriteCoord (MSG_BROADCAST, ent.origin_x);
-		WriteCoord (MSG_BROADCAST, ent.origin_y);
-		WriteCoord (MSG_BROADCAST, ent.origin_z);
-		WriteByte (MSG_BROADCAST, pcount);
-		WriteString(MSG_BROADCAST, effectname);
+		BasicEmitter(ent.origin, pcount, effectname);
 };
 
 //PENTA: new particle support
 void  (entity ent, float pcount, float tick, float life, string effectname) SUB_ExtendedEmitter = 
 {
-		WriteByte (MSG_BROADCAST, SVC_EXTENDEDEMITTER);
-		WriteCoord (MSG_BROADCAST, ent.origin_x);
-		WriteCoord (MSG_BROADCAST, ent.origin_y);
-		WriteCoord (MSG_BROADCAST, ent.origin_z);
-		WriteCoord (MSG_BROADCAST, ent.velocity_x);
-		WriteCoord (MSG_BROADCAST, ent.velocity_y);
-		WriteCoord (MSG_BROADCAST, ent.velocity_z);		
-		WriteByte (MSG_BROADCAST, pcount);
-		WriteLong (MSG_BROADCAST, life*100);		
-		WriteLong (MSG_BROADCAST, tick*100);
-		WriteString(MSG_BROADCAST, effectname);
+		ExtendedEmitter(ent.origin, ent.velocity, pcount, tick, life, effectname);
 };
